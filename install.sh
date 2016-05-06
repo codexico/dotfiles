@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # COLORS
 # @usage: printf "${Bla}black ${Red}red ${NC} ...\n"
@@ -25,13 +27,13 @@ sudo apt-get upgrade -y
 # BASE
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 echo "creating symlinks";
-ln -sv .bash_aliases ~/.bash_aliases
-ln -sv .csscomb.json ~/.csscomb.json
-ln -sv .editorconfig ~/.editorconfig
-ln -sv .eslintrc ~/.eslintrc
-ln -sv .gitconfig ~/.gitconfig
-ln -sv .gitignore_global ~/.gitignore_global
-ln -sv .jshintrc ~/.jshintrc
+ln -sv "$DOTFILES_DIR/.bash_aliases" ~/.bash_aliases
+ln -sv "$DOTFILES_DIR/.csscomb.json" ~/.csscomb.json
+ln -sv "$DOTFILES_DIR/.editorconfig" ~/.editorconfig
+ln -sv "$DOTFILES_DIR/.eslintrc" ~/.eslintrc
+ln -sv "$DOTFILES_DIR/.gitconfig" ~/.gitconfig
+ln -sv "$DOTFILES_DIR/.gitignore_global" ~/.gitignore_global
+ln -sv "$DOTFILES_DIR/.jshintrc" ~/.jshintrc
 
 echo "removing folders";
 rmdir ~/Documents
