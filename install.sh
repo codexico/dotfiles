@@ -70,5 +70,4 @@ sudo apt-get install -y chromium-browser gpodder skype vlc yakuake youtube-dl
 
 echo "installing development software";
 sudo apt-get install -y \
-    # git, vim, curl
-    git-core git-gui gitk vim curl \
+    git-core git-gui gitk vim curl
