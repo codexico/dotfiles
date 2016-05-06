@@ -62,7 +62,7 @@ printf "${Gre}$DIVIDER${NC}\n";
 echo "please accept the licenses";
 printf "${Gre}$DIVIDER${NC}\n";
 # Codecs
-sudo apt-get install -y libdvdcss2
+sudo apt-get install -y libdvd-pkg
 # > accept licenses
 
 echo "installing basic software";
