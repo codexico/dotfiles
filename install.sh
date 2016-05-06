@@ -2,10 +2,10 @@
 
 echo "creating symlinks";
 
-ln -s .bash_aliases ~/.bash_aliases
-ln -s .csscomb.json ~/.csscomb.json
-ln -s .editorconfig ~/.editorconfig
-ln -s .eslintrc ~/.eslintrc
-ln -s .gitconfig ~/.gitconfig
-ln -s .gitignore_global ~/.gitignore_global
-ln -s .jshintrc ~/.jshintrc
+ln -sv .bash_aliases ~/.bash_aliases
+ln -sv .csscomb.json ~/.csscomb.json
+ln -sv .editorconfig ~/.editorconfig
+ln -sv .eslintrc ~/.eslintrc
+ln -sv .gitconfig ~/.gitconfig
+ln -sv .gitignore_global ~/.gitignore_global
+ln -sv .jshintrc ~/.jshintrc
