@@ -54,7 +54,7 @@ echo "installing restricted software";
 printf "${Gre}$DIVIDER${NC}\n";
 echo "please accept the licenses";
 printf "${Gre}$DIVIDER${NC}\n";
-sudo apt-get install kubuntu-restricted-extras
+sudo apt-get install -y kubuntu-restricted-extras
 # > accept licenses
 
 echo "installing codecs software";
@@ -62,11 +62,11 @@ printf "${Gre}$DIVIDER${NC}\n";
 echo "please accept the licenses";
 printf "${Gre}$DIVIDER${NC}\n";
 # Codecs
-sudo apt-get install libdvdcss2
+sudo apt-get install -y libdvdcss2
 # > accept licenses
 
 echo "installing basic software";
-sudo apt-get install chromium-browser gpodder skype vlc yakuake youtube-dl
+sudo apt-get install -y chromium-browser gpodder skype vlc yakuake youtube-dl
 
 echo "installing development software";
 sudo apt-get install -y \
