@@ -13,3 +13,15 @@ cd dotfiles
 
 ./install.sh
 ```
+
+If want zsh and prezto:
+
+```
+./install_prezto.sh
+```
+
+To install node with nvm (todo: rbenv, pyenv):
+
+```
+./install_languages.sh
+```
