@@ -17,7 +17,7 @@ cd dotfiles
 If want zsh and prezto:
 
 ```
-./install_prezto.sh
+./install_zsh_prezto.sh
 ```
 
 To install node with nvm (todo: rbenv, pyenv):
