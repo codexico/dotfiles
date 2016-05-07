@@ -2,7 +2,7 @@
 
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
 
-ln -sv "$DOTFILES_DIR/.zprestorc" ~/.zprestorc
+ln -sv "$DOTFILES_DIR/.zpreztorc" ~/.zpreztorc
 
 echo "installing zsh";
 sudo apt-get install -y zsh
