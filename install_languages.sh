@@ -25,10 +25,12 @@ nvm alias default node
 # install some useful global packages
 npm install -g http-server livereload
 
+echo "Close and reopen your terminal to start using nvm";
+
 # source bashrc or zshrc
 if [ -f "$HOME/.zshrc" ]
 then
-	source ~/.zshrc
+	echo "or 'source ~/.zshrc'"
 else
-	source ~/.bashrc
+	echo "or 'source ~/.bashrc'"
 fi
