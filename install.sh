@@ -80,3 +80,9 @@ sudo dpkg -i atom.deb
 sudo apt-get install -f -y
 sudo dpkg -i atom.deb
 rm -f atom.deb
+
+echo "installing ubuntu-make";
+sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make
+sudo apt-get update
+sudo apt-get install ubuntu-make
+umake android
