@@ -73,3 +73,10 @@ sudo apt-get install -y chromium-browser gpodder skype vlc yakuake youtube-dl
 echo "installing development software";
 sudo apt-get install -y \
     git-core git-gui gitk vim curl
+
+echo "installing atom";
+curl -L -o atom.deb https://atom.io/download/deb
+sudo dpkg -i atom.deb
+sudo apt-get install -f -y
+sudo dpkg -i atom.deb
+rm -f atom.deb
