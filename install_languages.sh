@@ -24,3 +24,11 @@ nvm install node
 nvm alias default node
 # install some useful global packages
 npm install -g http-server livereload
+
+# source bashrc or zshrc
+if [ -f "$HOME/.zshrc" ]
+then
+	source ~/.zshrc
+else
+	source ~/.bashrc
+fi
