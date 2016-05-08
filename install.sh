@@ -70,7 +70,8 @@ sudo apt-get install -y libdvd-pkg
 # > accept licenses
 
 echo "installing basic software";
-sudo apt-get install -y chromium-browser gpodder skype vlc yakuake youtube-dl
+sudo apt-get install -y chromium-browser gpodder skype vlc yakuake youtube-dl \
+    calibre
 
 echo "installing development software";
 sudo apt-get install -y \
