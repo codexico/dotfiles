@@ -22,8 +22,8 @@ If want zsh and prezto:
     Don't forget to change to the powerline fonts:
 
     Konsole > Settings > Configure > Profiles > New Profile > “zsh”
-    \> Appearance > Select Font > Droid Sans Mono for Powerline
-    \> Apply > Set as Default
+    > Appearance > Select Font > Droid Sans Mono for Powerline
+    > Apply > Set as Default
 
 
 To install node with nvm (todo: rbenv, pyenv):

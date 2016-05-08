@@ -48,6 +48,8 @@ mkdir ~/refs
 mkdir ~/projs
 mkdir ~/inbox
 mkdir ~/tmp
+mkdir ~/opt
+mkdir ~/local
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # INSTALL SOFTWARE
@@ -74,15 +76,47 @@ echo "installing development software";
 sudo apt-get install -y \
     git-core git-gui gitk vim curl
 
+echo "installing Google Chrome";
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+rm -f google-chrome-stable_current_amd64.deb
+google-chrome &
+
+echo "installing Telegram";
+curl -L -o telegram.tar.xz https://tdesktop.com/linux
+tar xf telegram.tar.xz
+mv Telegram ~/opt/Telegram/
+rm -f Telegram telegram.tar.xz
+~/opt/Telegram/Telegram &
+
+echo "installing dropbox";
+curl -L -o dropbox.tar.gz https://www.dropbox.com/download?plat=lnx.x86_64
+tar xf dropbox.tar.gz
+mv .dropbox-dist ~/.dropbox-dist/
+~/.dropbox-dist/dropboxd &
+
+echo "installing ubuntu-make";
+sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make -y
+sudo apt-get update
+sudo apt-get install ubuntu-make -y
+
+echo "installing Android Studio";
+umake android
+
 echo "installing atom";
 curl -L -o atom.deb https://atom.io/download/deb
 sudo dpkg -i atom.deb
 sudo apt-get install -f -y
 sudo dpkg -i atom.deb
 rm -f atom.deb
+printf "${Gre}$DIVIDER${NC}\n";
+echo "run 'apm stars --install' to install your starred packages";
+echo "you will need your token: https://atom.io/account";
+printf "${Gre}$DIVIDER${NC}\n";
+chromium-browser https://atom.io/account &
 
-echo "installing ubuntu-make";
-sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make
-sudo apt-get update
-sudo apt-get install ubuntu-make
-umake android
+echo "removing files and checking if all ok";
+sudo apt-get autoremove
+sudo apt-get autoclean
+sudo apt-get clean
+sudo apt-get check
