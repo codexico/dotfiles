@@ -74,7 +74,8 @@ sudo apt-get install -y chromium-browser gpodder skype vlc yakuake youtube-dl
 
 echo "installing development software";
 sudo apt-get install -y \
-    git-core git-gui gitk vim curl
+    git-core git-gui gitk vim curl \
+    virtualbox virtualbox-guest-additions-iso virtualbox-guest-utils
 
 echo "installing Google Chrome";
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
