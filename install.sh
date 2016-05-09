@@ -7,26 +7,27 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
 # @usage: printf "${Bla}black ${Red}red ${NC} ...\n"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Red='\e[0;31m';
+Yel='\e[0;33m';
 Gre='\e[0;32m';
 # No Color
-NC='\e[0m'
+NC='\e[0m';
 DIVIDER="==============================================";
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # CLEANING
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-echo "removing bloat software";
+printf "${Yel}removing bloat software${NC}\n${NC}\n";
 sudo apt-get remove --purge --auto-remove -y \
     kaddressbook kde-telepathy kmail kontact korganizer thunderbird
 
-echo "updating";
+printf "${Yel}performing system update${NC}\n";
 sudo apt-get update
 sudo apt-get upgrade -y
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # BASE
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-echo "creating symlinks";
+printf "${Yel}creating symlinks${NC}\n";
 ln -sv "$DOTFILES_DIR/.bash_aliases" ~/.bash_aliases
 ln -sv "$DOTFILES_DIR/.csscomb.json" ~/.csscomb.json
 ln -sv "$DOTFILES_DIR/.editorconfig" ~/.editorconfig
@@ -35,14 +36,14 @@ ln -sv "$DOTFILES_DIR/.gitconfig" ~/.gitconfig
 ln -sv "$DOTFILES_DIR/.gitignore_global" ~/.gitignore_global
 ln -sv "$DOTFILES_DIR/.jshintrc" ~/.jshintrc
 
-echo "removing folders";
+printf "${Yel}removing folders${NC}\n";
 rmdir ~/Documents
 rmdir ~/Music
 rmdir ~/Pictures
 rmdir ~/Templates
 rmdir ~/Videos
 
-echo "creating gtd folders";
+printf "${Yel}creating gtd folders${NC}\n";
 # things to do
 mkdir ~/actions
 # references, files in general, support for projects -> backup regularly
@@ -61,14 +62,14 @@ mkdir ~/local
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # INSTALL SOFTWARE
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-echo "installing restricted software";
+printf "${Yel}installing restricted software${NC}\n";
 printf "${Gre}$DIVIDER${NC}\n";
 echo "please accept the licenses";
 printf "${Gre}$DIVIDER${NC}\n";
 sudo apt-get install -y kubuntu-restricted-extras
 # > accept licenses
 
-echo "installing codecs software";
+printf "${Yel}installing codecs software${NC}\n";
 printf "${Gre}$DIVIDER${NC}\n";
 echo "please accept the licenses";
 printf "${Gre}$DIVIDER${NC}\n";
@@ -76,43 +77,43 @@ printf "${Gre}$DIVIDER${NC}\n";
 sudo apt-get install -y libdvd-pkg
 # > accept licenses
 
-echo "installing basic software";
+printf "${Yel}installing basic software${NC}\n";
 sudo apt-get install -y chromium-browser gpodder skype vlc yakuake youtube-dl \
     calibre
 
-echo "installing development software";
+printf "${Yel}installing development software${NC}\n";
 sudo apt-get install -y \
     git-core git-gui gitk vim curl \
     virtualbox virtualbox-guest-additions-iso virtualbox-guest-utils
 
-echo "installing Google Chrome";
+printf "${Yel}installing Google Chrome${NC}\n";
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 rm -f google-chrome-stable_current_amd64.deb
 google-chrome &
 
-echo "installing Telegram";
+printf "${Yel}installing Telegram${NC}\n";
 curl -L -o telegram.tar.xz https://tdesktop.com/linux
 tar xf telegram.tar.xz
 mv Telegram ~/opt/Telegram/
 rm -f Telegram telegram.tar.xz
 ~/opt/Telegram/Telegram &
 
-echo "installing dropbox";
+printf "${Yel}installing dropbox${NC}\n";
 curl -L -o dropbox.tar.gz https://www.dropbox.com/download?plat=lnx.x86_64
 tar xf dropbox.tar.gz
 mv .dropbox-dist ~/.dropbox-dist/
 ~/.dropbox-dist/dropboxd &
 
-echo "installing ubuntu-make";
+printf "${Yel}installing ubuntu-make${NC}\n";
 sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make -y
 sudo apt-get update
 sudo apt-get install ubuntu-make -y
 
-echo "installing Android Studio";
+printf "${Yel}installing Android Studio${NC}\n";
 umake android
 
-echo "installing atom";
+printf "${Yel}installing atom editor${NC}\n";
 curl -L -o atom.deb https://atom.io/download/deb
 sudo dpkg -i atom.deb
 sudo apt-get install -f -y
@@ -124,7 +125,7 @@ echo "you will need your token: https://atom.io/account";
 printf "${Gre}$DIVIDER${NC}\n";
 chromium-browser https://atom.io/account &
 
-echo "removing files and checking if all ok";
+printf "${Yel}removing files and checking if all ok${NC}\n";
 sudo apt-get autoremove
 sudo apt-get autoclean
 sudo apt-get clean
