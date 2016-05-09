@@ -43,12 +43,19 @@ rmdir ~/Templates
 rmdir ~/Videos
 
 echo "creating gtd folders";
+# things to do
 mkdir ~/actions
+# references, files in general, support for projects -> backup regularly
 mkdir ~/refs
+# the work is done here -> backup regularly and/or be on some source control
 mkdir ~/projs
+# where it all begins
 mkdir ~/inbox
+# temporary files -> delete regularly
 mkdir ~/tmp
+# user software
 mkdir ~/opt
+# user files that dont need backup
 mkdir ~/local
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
