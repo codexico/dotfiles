@@ -11,7 +11,7 @@
 #
 # TODO:
 #     - perguntar ao user em que diretório deseja deixar o arquivo
-#     - verificar se já está instalada e atualizar
+#     - verificar se já está instalada chamar o zzzz --atualiza
 # ----------------------------------------------------------------------------
 
 echo "instalando as funcoeszz";
