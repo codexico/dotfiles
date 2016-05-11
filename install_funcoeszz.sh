@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # ----------------------------------------------------------------------------
 # Baixa e instala a última versão das funcoeszz
