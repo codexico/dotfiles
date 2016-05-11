@@ -7,7 +7,10 @@
 #
 # Autor: @codexico
 # Desde: 2016-05-11
-# Versão: 1
+# Versão: 0.1
+#
+# TODO:
+#     - perguntar ao user em que diretório deseja deixar o arquivo
 # ----------------------------------------------------------------------------
 
 echo "instalando as funcoeszz";
@@ -18,14 +21,18 @@ curl -L -o funcoeszz $LAST_ZZ_URL
 
 # seria melhor testar a existência dos arquivos ~/.bashrc e ~/.zshrc?
 if [ "$SHELL" == "/bin/bash" ]; then
-  echo "instalando no bash";
+    echo "instalando no bash";
+    chmod +x funcoeszz
+    mv funcoeszz ~/bin/funcoeszz
+    cd ~/bin
     ./funcoeszz zzzz --bashrc
 elif [ "$SHELL" == "/usr/bin/zsh" ]; then
-  echo "instalando no zsh";
+    echo "instalando no zsh";
+    chmod +x funcoeszz
+    mv funcoeszz ~/bin/funcoeszz
+    cd ~/bin
     ./funcoeszz zzzz --zshrc
 else
-    echo "Não sei qual seu shell!";
-    echo "Por favor acesse o faq: http://funcoeszz.net/faq.html";
+    echo "Não sei qual o seu shell!";
+    echo "Por favor acesse o FAQ: http://funcoeszz.net/faq.html";
 fi
-
-rm -f funcoeszz
