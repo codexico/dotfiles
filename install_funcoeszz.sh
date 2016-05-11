@@ -7,7 +7,7 @@
 #
 # Autor: @codexico
 # Desde: 2016-05-11
-# Versão: 0.1
+# Versão: 0.1.1
 #
 # TODO:
 #     - perguntar ao user em que diretório deseja deixar o arquivo
@@ -26,12 +26,14 @@ if [ "$SHELL" == "/bin/bash" ]; then
     mv funcoeszz ~/bin/funcoeszz
     cd ~/bin
     ./funcoeszz zzzz --bashrc
+    echo "execute 'source ~/.bashrc' ou abra outro terminal";
 elif [ "$SHELL" == "/usr/bin/zsh" ]; then
     echo "instalando no zsh";
     chmod +x funcoeszz
     mv funcoeszz ~/bin/funcoeszz
     cd ~/bin
     ./funcoeszz zzzz --zshrc
+    echo "execute 'source ~/.zshrc' ou abra outro terminal";
 else
     echo "Não sei qual o seu shell!";
     echo "Por favor acesse o FAQ: http://funcoeszz.net/faq.html";
