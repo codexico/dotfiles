@@ -54,6 +54,8 @@ mkdir ~/projs
 mkdir ~/inbox
 # temporary files -> delete regularly
 mkdir ~/tmp
+# user scripts
+mkdir ~/bin
 # user software
 mkdir ~/opt
 # user files that dont need backup
