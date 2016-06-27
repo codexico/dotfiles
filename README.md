@@ -38,6 +38,12 @@ Don't forget to change to the powerline fonts, on KDE:
 ./install_languages.sh
 ```
 
+## Virtual Machine
+
+When installing on a VM, replace `install.sh` for `install_vm.sh`, it has less
+software to install.
+
+
 ## Feedback
 
 Suggestions/improvements [please](https://github.com/codexico/dotfiles/issues)!
