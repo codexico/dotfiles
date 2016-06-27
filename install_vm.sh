@@ -71,14 +71,6 @@ printf "${Gre}$DIVIDER${NC}\n";
 sudo apt-get install -y kubuntu-restricted-extras
 # > accept licenses
 
-printf "${Yel}installing codecs software${NC}\n";
-printf "${Gre}$DIVIDER${NC}\n";
-echo "please accept the licenses";
-printf "${Gre}$DIVIDER${NC}\n";
-# Codecs
-sudo apt-get install -y libdvd-pkg
-# > accept licenses
-
 printf "${Yel}installing basic software${NC}\n";
 sudo apt-get install -y chromium-browser vlc yakuake calibre
 
