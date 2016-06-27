@@ -91,9 +91,6 @@ sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make -y
 sudo apt-get update
 sudo apt-get install ubuntu-make -y
 
-printf "${Yel}installing Android Studio${NC}\n";
-umake android
-
 printf "${Yel}installing atom editor${NC}\n";
 curl -L -o atom.deb https://atom.io/download/deb
 sudo dpkg -i atom.deb
