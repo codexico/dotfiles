@@ -86,19 +86,6 @@ printf "${Yel}installing development software${NC}\n";
 sudo apt-get install -y \
     git-core git-gui gitk vim curl
 
-printf "${Yel}installing Google Chrome${NC}\n";
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
-rm -f google-chrome-stable_current_amd64.deb
-google-chrome &
-
-printf "${Yel}installing Telegram${NC}\n";
-curl -L -o telegram.tar.xz https://tdesktop.com/linux
-tar xf telegram.tar.xz
-mv Telegram ~/opt/Telegram/
-rm -f Telegram telegram.tar.xz
-~/opt/Telegram/Telegram &
-
 printf "${Yel}installing dropbox${NC}\n";
 curl -L -o dropbox.tar.gz https://www.dropbox.com/download?plat=lnx.x86_64
 tar xf dropbox.tar.gz
