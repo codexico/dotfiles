@@ -86,12 +86,6 @@ printf "${Yel}installing development software${NC}\n";
 sudo apt-get install -y \
     git-core git-gui gitk vim curl
 
-printf "${Yel}installing dropbox${NC}\n";
-curl -L -o dropbox.tar.gz https://www.dropbox.com/download?plat=lnx.x86_64
-tar xf dropbox.tar.gz
-mv .dropbox-dist ~/.dropbox-dist/
-~/.dropbox-dist/dropboxd &
-
 printf "${Yel}installing ubuntu-make${NC}\n";
 sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make -y
 sudo apt-get update
