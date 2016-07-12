@@ -14,6 +14,9 @@
 #     - verificar se já está instalada chamar o zzzz --atualiza
 # ----------------------------------------------------------------------------
 
+echo "instalando dependências das funcoeszz";
+sudo apt-get install lynx;
+
 echo "instalando as funcoeszz";
 
 LAST_ZZ_VERSION=$(curl http://funcoeszz.net/v);

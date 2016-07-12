@@ -18,7 +18,10 @@ Copy the dotfiles, remove some bloatware and install a lot of software:
 ```
 ./install.sh
 ```
-
+> Virtual Machine Note:
+>
+> When installing on a VM, replace `install.sh` for `install_vm.sh`, it has less
+> software to install.
 
 ## 2- (Optional) Install zsh and prezto
 
@@ -37,12 +40,6 @@ Don't forget to change to the powerline fonts, on KDE:
 ```
 ./install_languages.sh
 ```
-
-## Virtual Machine
-
-When installing on a VM, replace `install.sh` for `install_vm.sh`, it has less
-software to install.
-
 
 ## Feedback
 
