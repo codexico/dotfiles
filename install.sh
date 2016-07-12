@@ -102,6 +102,7 @@ rm -f Telegram telegram.tar.xz
 ~/opt/Telegram/Telegram &
 
 printf "${Yel}installing dropbox${NC}\n";
+sudo apt-get install python-gpgme
 curl -L -o dropbox.tar.gz https://www.dropbox.com/download?plat=lnx.x86_64
 tar xf dropbox.tar.gz
 mv .dropbox-dist ~/.dropbox-dist/
