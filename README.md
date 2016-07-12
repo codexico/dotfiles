@@ -41,6 +41,16 @@ Don't forget to change to the powerline fonts, on KDE:
 ./install_languages.sh
 ```
 
+## FunçõesZZ
+
+For brazilian users it's included the FunçõesZZ!
+
+https://github.com/funcoeszz/funcoeszz is a collection of shell commands, for example, to uppercase, simple math, tv guide, translate en<-->pt_br, ...
+
+```
+./install_funcoeszz.sh
+```
+
 ## Feedback
 
 Suggestions/improvements [please](https://github.com/codexico/dotfiles/issues)!
