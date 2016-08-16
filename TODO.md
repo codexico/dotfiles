@@ -18,7 +18,7 @@ Docs
 - [ ] better README
 
 
-Expand
+Expand - add new commands
 ------
 
 - [ ] install_rvm_ruby.sh (with compass)
@@ -37,3 +37,5 @@ Other
         - [ ] remove username
         - [ ] add time and command number
 - [ ] Try to copy configs from KDE
+- [ ] install_languages.sh
+    - [ ] download the last tag from nvm
