@@ -55,11 +55,21 @@
             "-ms-overflow-x",
             "-ms-overflow-y",
             "clip",
-            "zoom",
+            "zoom"
+        ],
+        [
+            "flex",
+            "flex-basis",
             "flex-direction",
-            "flex-order",
-            "flex-pack",
-            "flex-align"
+            "flex-flow",
+            "flex-grow",
+            "flex-shrink",
+            "flex-wrap",
+            "order",
+            "align-content",
+            "align-items",
+            "align-self",
+            "justify-content"
         ],
         [
             "-webkit-box-sizing",

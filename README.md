@@ -26,7 +26,8 @@ Copy the dotfiles, remove some bloatware and install a lot of software:
 ## 2- (Optional) Install zsh and prezto
 
 ```
-./install_zsh_prezto.sh
+./install_zsh.sh
+./install_prezto.sh
 ```
 Don't forget to change to the powerline fonts, on KDE:
 
