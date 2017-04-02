@@ -4,11 +4,6 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
 
 ln -sv "$DOTFILES_DIR/.zpreztorc" ~/.zpreztorc
 
-echo "installing powerline fonts";
-git clone https://github.com/powerline/fonts.git tmpfonts
-./tmpfonts/install.sh
-rm -rf tmpfonts
-
 echo "clonning prezto";
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
