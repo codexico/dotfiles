@@ -16,9 +16,6 @@ DIVIDER="==============================================";
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # CLEANING
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-printf "${Yel}removing bloat software${NC}\n${NC}\n";
-sudo apt-get remove --purge --auto-remove -y \
-    kaddressbook kde-telepathy kmail kontact korganizer thunderbird
 
 printf "${Yel}performing system update${NC}\n";
 sudo apt-get update
@@ -31,10 +28,10 @@ printf "${Yel}creating symlinks${NC}\n";
 ln -sv "$DOTFILES_DIR/.bash_aliases" ~/.bash_aliases
 ln -sv "$DOTFILES_DIR/.csscomb.json" ~/.csscomb.json
 ln -sv "$DOTFILES_DIR/.editorconfig" ~/.editorconfig
-ln -sv "$DOTFILES_DIR/.eslintrc" ~/.eslintrc
+#ln -sv "$DOTFILES_DIR/.eslintrc" ~/.eslintrc
 ln -sv "$DOTFILES_DIR/.gitconfig" ~/.gitconfig
 ln -sv "$DOTFILES_DIR/.gitignore_global" ~/.gitignore_global
-ln -sv "$DOTFILES_DIR/.jshintrc" ~/.jshintrc
+#ln -sv "$DOTFILES_DIR/.jshintrc" ~/.jshintrc
 
 printf "${Yel}removing folders${NC}\n";
 rmdir ~/Documents
@@ -51,7 +48,7 @@ mkdir ~/refs
 # the work is done here -> backup regularly and/or be on some source control
 mkdir ~/projs
 # where it all begins
-mkdir ~/inbox
+mkdir ~/in
 # temporary files -> delete regularly
 mkdir ~/tmp
 # user scripts
@@ -68,7 +65,7 @@ printf "${Yel}installing restricted software${NC}\n";
 printf "${Gre}$DIVIDER${NC}\n";
 echo "please accept the licenses";
 printf "${Gre}$DIVIDER${NC}\n";
-sudo apt-get install -y kubuntu-restricted-extras
+#sudo apt-get install -y kubuntu-restricted-extras
 # > accept licenses
 
 printf "${Yel}installing codecs software${NC}\n";
@@ -76,7 +73,7 @@ printf "${Gre}$DIVIDER${NC}\n";
 echo "please accept the licenses";
 printf "${Gre}$DIVIDER${NC}\n";
 # Codecs
-sudo apt-get install -y libdvd-pkg
+#sudo apt-get install -y libdvd-pkg
 # > accept licenses
 
 printf "${Yel}installing basic software${NC}\n";
