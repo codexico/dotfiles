@@ -3,7 +3,7 @@
 # must be installed after because involves bashrc or zshrc changes
 
 # MAYBE: function to get the last version
-NVM_URL='https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh';
+NVM_URL='https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh';
 
 echo "installing node with nvm";
 
