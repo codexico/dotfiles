@@ -78,7 +78,7 @@ printf "${Gre}$DIVIDER${NC}\n";
 
 printf "${Yel}installing basic software${NC}\n";
 sudo apt-get install -y chromium-browser gpodder skype vlc yakuake youtube-dl \
-    calibre
+    calibre openvpn network-manager-openvpn
 
 printf "${Yel}installing development software${NC}\n";
 sudo apt-get install -y \
