@@ -5,8 +5,8 @@
 # Helper functions
 #
 # Best if sourced on .bashrc or .zshrc
-# 
-# Ex: 
+#
+# Ex:
 # [ -f "$HOME/dotfiles/functions.sh" ] && source $HOME/dotfiles/functions.sh;
 # ----------------------------------------------------------------------------
 
@@ -39,6 +39,17 @@ function proj-init() {
 	mkdir tmp;      # temporary files
 	mkdir material;	# original and received files from client, do not modify here
 
+}
+
+# ----------------------------------------------------------------------------
+# cd into project code
+#
+# Ex:
+# $ proj cool-project
+# ----------------------------------------------------------------------------
+function proj() {
+	PROJS_DIR="$HOME/projs";
+	cd $PROJS_DIR/$1/code/$1;
 }
 
 # ----------------------------------------------------------------------------
