@@ -27,8 +27,31 @@ Copy the dotfiles, remove some bloatware and install a lot of software:
 
 ```
 ./install_zsh.sh
+# or
 ./install_prezto.sh
 ```
+
+### Oh-my-zsh
+
+```
+./install_oh-my-zsh.sh
+```
+Recomended plugins for zsh:
+```
+plugins=(
+  git
+  fasd
+)
+```
+
+Recomended theme for zsh:
+```
+./install_powerline_fonts.sh
+```
+```
+ZSH_THEME="agnoster"
+```
+
 Don't forget to change to the powerline fonts, on KDE:
 
     Konsole > Settings > Configure > Profiles > New Profile > “zsh”
