@@ -23,7 +23,7 @@ nvm install node
 # set last node as default
 nvm alias default node
 # install some useful global packages
-npm install -g http-server livereload eslint cordova grunt-cli
+npm install -g http-server livereload
 
 echo "Close and reopen your terminal to start using nvm";
 
