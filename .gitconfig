@@ -138,6 +138,11 @@
     # git acm message without quotes
     acm = "!f() { git add . && git commit -m \"$(echo $@)\"; }; f";
 
+    # commit with message, dont need quotation marks
+    # Example:
+    # git cm message without quotes
+    cm = "!f() { git commit -m \"$(echo $@)\"; }; f";
+
     # Amend the currently staged files to the latest commit
     amend = commit --amend --reuse-message=HEAD
 
@@ -168,6 +173,29 @@
 
     # pull and push this branch
     update = "!f() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git s && git pull origin ${BRANCH} && git push origin ${BRANCH}; }; f";
+
+    # go to master, fetch, pull, and back to branch
+    upmaster = !git checkout master && git fetch -pt && git pull && git checkout -;
+
+    # push to origin
+    first-push = !git push -u origin $(git rev-parse --abbrev-ref HEAD);
+
+
+    ##########
+    # Rebases
+    ##########
+
+    # Interactive rebase with the given number of latest commits
+    reb = "!r() { git rebase -i HEAD~$1; }; r"
+
+    # Squash all commits from actual branch
+    squash = "!f() { COUNT=$(git commits); git reb ${COUNT}; }; f";
+
+    # Update master and rebase your branch
+    pr-rebase =  !git upmaster && git rebase master;
+
+    # Update master and squash your branch
+    squashmaster = "!f() { git upmaster; git squash; f";
 
 
     ##########
@@ -204,7 +232,7 @@
     create = "!f() { git checkout -B $1 && git push origin $1; }; f";
 
     # Switch to a branch, creating it if necessary
-    go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+    gb = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
     # update branchs
     branchs = !git fetch --all && git fetch -p && git branch -a;
@@ -246,8 +274,8 @@
     # Example
     # git unstage file1 file2 ...
     unstage = reset HEAD -- #file;
-    
-    # This leaves your working tree (the state of your files on disk) unchanged 
+
+    # This leaves your working tree (the state of your files on disk) unchanged
     # but undoes the commit and leaves the changes you committed unstaged
     # https://stackoverflow.com/questions/927358/how-to-undo-the-most-recent-commits-in-git
     uc = reset HEAD~;
