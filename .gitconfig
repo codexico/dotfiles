@@ -180,6 +180,9 @@
     # push to origin
     first-push = !git push -u origin $(git rev-parse --abbrev-ref HEAD);
 
+    # fetch and pull
+    fp = !git fetch -pt && git pull
+
 
     ##########
     # Rebases
