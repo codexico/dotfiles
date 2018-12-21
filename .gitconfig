@@ -157,6 +157,9 @@
     # Interactive rebase with the given number of latest commits
     reb = "!r() { git rebase -i HEAD~$1; }; r"
 
+    # Add and continue rebase
+    continue = !git add . && git rebase --continue
+
 
     ##########
     # Pull, Push
@@ -190,6 +193,9 @@
 
     # Interactive rebase with the given number of latest commits
     reb = "!r() { git rebase -i HEAD~$1; }; r"
+
+    # Count commits on branch since master
+    commits = !git rev-list --count HEAD ^master
 
     # Squash all commits from actual branch
     squash = "!f() { COUNT=$(git commits); git reb ${COUNT}; }; f";
