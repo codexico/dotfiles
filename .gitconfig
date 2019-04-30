@@ -287,7 +287,7 @@
     # This leaves your working tree (the state of your files on disk) unchanged
     # but undoes the commit and leaves the changes you committed unstaged
     # https://stackoverflow.com/questions/927358/how-to-undo-the-most-recent-commits-in-git
-    uc = reset HEAD~;
+    undocommit = reset HEAD~;
 
 
     ##########
