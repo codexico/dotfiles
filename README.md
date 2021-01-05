@@ -20,11 +20,6 @@ Copy the dotfiles, remove some bloatware and install a lot of software:
 ./install.sh
 ```
 
-> Virtual Machine Note:
->
-> When installing on a VM, replace `install.sh` for `install_vm.sh`, it has less
-> software to install.
-
 ## 2- (Optional) Install zsh
 
 ```
