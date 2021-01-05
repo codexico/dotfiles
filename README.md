@@ -1,6 +1,7 @@
 # dotfiles
 
 ### Scripts to set up a new (k)ubuntu sytem
+
 Use at your own risk! And don't forget to change the user on _.gitconfig_ after the installation.
 
 ## 0- clone the dotfiles
@@ -18,17 +19,16 @@ Copy the dotfiles, remove some bloatware and install a lot of software:
 ```
 ./install.sh
 ```
+
 > Virtual Machine Note:
 >
 > When installing on a VM, replace `install.sh` for `install_vm.sh`, it has less
 > software to install.
 
-## 2- (Optional) Install zsh and prezto
+## 2- (Optional) Install zsh
 
 ```
 ./install_zsh.sh
-# or
-./install_prezto.sh
 ```
 
 ### Oh-my-zsh
@@ -36,7 +36,9 @@ Copy the dotfiles, remove some bloatware and install a lot of software:
 ```
 ./install_oh-my-zsh.sh
 ```
+
 Recomended plugins for zsh:
+
 ```
 plugins=(
   git
@@ -45,9 +47,11 @@ plugins=(
 ```
 
 Recomended theme for zsh:
+
 ```
 ./install_powerline_fonts.sh
 ```
+
 ```
 ZSH_THEME="agnoster"
 ```
@@ -57,7 +61,6 @@ Don't forget to change to the powerline fonts, on KDE:
     Konsole > Settings > Configure > Profiles > New Profile > “zsh”
     > Appearance > Select Font > Droid Sans Mono for Powerline
     > Apply > Set as Default
-
 
 ## 3 - Install node with nvm
 
