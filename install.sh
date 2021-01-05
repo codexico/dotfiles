@@ -16,6 +16,9 @@ DIVIDER="==============================================";
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # CLEANING
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+printf "${Yel}removing kubuntu bloat software${NC}\n${NC}\n";
+sudo apt-get remove --purge --auto-remove -y \
+    kaddressbook kde-telepathy kmail kontact korganizer thunderbird
 
 printf "${Yel}performing system update${NC}\n";
 sudo apt-get update
