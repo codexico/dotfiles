@@ -65,9 +65,9 @@ Don't forget to change to the powerline fonts, on KDE:
 
 ## FunçõesZZ
 
-For brazilian users it's included the FunçõesZZ!
+For brazilian users [FunçõesZZ](https://github.com/funcoeszz/funcoeszz) are included!
 
-https://github.com/funcoeszz/funcoeszz is a collection of shell commands, for example, to uppercase, simple math, tv guide, translate en<-->pt_br, ...
+[FunçõesZZ](https://github.com/funcoeszz/funcoeszz) are a collection of shell commands, for example, to uppercase, simple math, tv guide, translate en<-->pt_br, ...
 
 ```
 ./install_funcoeszz.sh
