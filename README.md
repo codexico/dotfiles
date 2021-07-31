@@ -7,7 +7,7 @@ Use at your own risk! And don't forget to change the user on _.gitconfig_ after 
 ## 0- clone the dotfiles
 
 ```
-sudo apt-get install git -y
+sudo apt install git -y
 git clone https://github.com/codexico/dotfiles.git
 cd dotfiles
 ```

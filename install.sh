@@ -17,12 +17,12 @@ DIVIDER="==============================================";
 # CLEANING
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 printf "${Yel}removing kubuntu bloat software${NC}\n${NC}\n";
-sudo apt-get remove --purge --auto-remove -y \
+sudo apt remove --purge --auto-remove -y \
     kaddressbook kde-telepathy kmail kontact korganizer thunderbird
 
 printf "${Yel}performing system update${NC}\n";
-sudo apt-get update
-sudo apt-get upgrade -y
+sudo apt update
+sudo apt upgrade -y
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # BASE
@@ -68,7 +68,7 @@ printf "${Yel}installing restricted software${NC}\n";
 printf "${Gre}$DIVIDER${NC}\n";
 echo "please accept the licenses";
 printf "${Gre}$DIVIDER${NC}\n";
-#sudo apt-get install -y kubuntu-restricted-extras
+#sudo apt install -y kubuntu-restricted-extras
 # > accept licenses
 
 printf "${Yel}installing codecs software${NC}\n";
@@ -76,15 +76,15 @@ printf "${Gre}$DIVIDER${NC}\n";
 echo "please accept the licenses";
 printf "${Gre}$DIVIDER${NC}\n";
 # Codecs
-#sudo apt-get install -y libdvd-pkg
+#sudo apt install -y libdvd-pkg
 # > accept licenses
 
 printf "${Yel}installing basic software${NC}\n";
-sudo apt-get install -y chromium-browser gpodder skype vlc yakuake youtube-dl \
+sudo apt install -y chromium-browser gpodder skype vlc yakuake youtube-dl \
     calibre openvpn network-manager-openvpn
 
 printf "${Yel}installing development software${NC}\n";
-sudo apt-get install -y \
+sudo apt install -y \
     git-core git-gui gitk vim curl
 
 printf "${Yel}installing Google Chrome${NC}\n";
@@ -101,7 +101,7 @@ rm -f Telegram telegram.tar.xz
 ~/opt/Telegram/Telegram &
 
 printf "${Yel}installing dropbox${NC}\n";
-sudo apt-get install python-gpgme
+sudo apt install python-gpgme
 curl -L -o dropbox.tar.gz https://www.dropbox.com/download?plat=lnx.x86_64
 tar xf dropbox.tar.gz
 mv .dropbox-dist ~/.dropbox-dist/
@@ -109,8 +109,8 @@ mv .dropbox-dist ~/.dropbox-dist/
 
 printf "${Yel}installing ubuntu-make${NC}\n";
 sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make -y
-sudo apt-get update
-sudo apt-get install ubuntu-make -y
+sudo apt update
+sudo apt install ubuntu-make -y
 
 printf "${Yel}installing Android Studio${NC}\n";
 umake android
@@ -118,7 +118,7 @@ umake android
 printf "${Yel}installing atom editor${NC}\n";
 curl -L -o atom.deb https://atom.io/download/deb
 sudo dpkg -i atom.deb
-sudo apt-get install -f -y
+sudo apt install -f -y
 sudo dpkg -i atom.deb
 rm -f atom.deb
 printf "${Gre}$DIVIDER${NC}\n";
@@ -128,7 +128,7 @@ printf "${Gre}$DIVIDER${NC}\n";
 chromium-browser https://atom.io/account &
 
 printf "${Yel}removing files and checking if all ok${NC}\n";
-sudo apt-get autoremove
-sudo apt-get autoclean
-sudo apt-get clean
-sudo apt-get check
+sudo apt autoremove
+sudo apt autoclean
+sudo apt clean
+sudo apt check

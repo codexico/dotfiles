@@ -15,7 +15,7 @@
 # ----------------------------------------------------------------------------
 
 echo "instalando dependências das funcoeszz";
-sudo apt-get install lynx;
+sudo apt install lynx;
 
 echo "instalando as funcoeszz";
 
