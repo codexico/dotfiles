@@ -1,134 +1,204 @@
 #!/usr/bin/env bash
 
-DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
+source ./scripts/utils.sh
+
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # COLORS
 # @usage: printf "${Bla}black ${Red}red ${NC} ...\n"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Red='\e[0;31m';
-Yel='\e[0;33m';
-Gre='\e[0;32m';
+Red='\e[0;31m'
+Yel='\e[0;33m'
+Gre='\e[0;32m'
 # No Color
-NC='\e[0m';
-DIVIDER="==============================================";
-
+NC='\e[0m'
+DIVIDER="=============================================="
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # CLEANING
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-printf "${Yel}removing kubuntu bloat software${NC}\n${NC}\n";
-sudo apt remove --purge --auto-remove -y \
-    kaddressbook kde-telepathy kmail kontact korganizer thunderbird
 
-printf "${Yel}performing system update${NC}\n";
+# TODO: YES TO ALL
+
+remove_kde_bloatware() {
+    sudo apt remove --purge --auto-remove -y \
+        kaddressbook kde-telepathy kmail kontact korganizer thunderbird
+
+}
+question="Do you want to remove KDE bloat software?"
+if confirm "$question"; then
+    remove_kde_bloatware
+fi
+
+printf "\n\n${Yel}performing system update${NC}\n\n"
 sudo apt update
 sudo apt upgrade -y
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # BASE
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-printf "${Yel}creating symlinks${NC}\n";
-ln -sv "$DOTFILES_DIR/.bash_aliases" ~/.bash_aliases
-ln -sv "$DOTFILES_DIR/.csscomb.json" ~/.csscomb.json
-ln -sv "$DOTFILES_DIR/.editorconfig" ~/.editorconfig
-#ln -sv "$DOTFILES_DIR/.eslintrc" ~/.eslintrc
-ln -sv "$DOTFILES_DIR/.gitconfig" ~/.gitconfig
-ln -sv "$DOTFILES_DIR/.gitignore_global" ~/.gitignore_global
-#ln -sv "$DOTFILES_DIR/.jshintrc" ~/.jshintrc
 
-printf "${Yel}removing folders${NC}\n";
-rmdir ~/Documents
-rmdir ~/Music
-rmdir ~/Pictures
-rmdir ~/Templates
-rmdir ~/Videos
+copy_dotfiles() {
+    printf "${Yel}creating symlinks${NC}\n"
+    ln -sv "$DOTFILES_DIR/.bash_aliases" ~/.bash_aliases
+    ln -sv "$DOTFILES_DIR/.csscomb.json" ~/.csscomb.json
+    ln -sv "$DOTFILES_DIR/.editorconfig" ~/.editorconfig
+    ln -sv "$DOTFILES_DIR/.gitconfig" ~/.gitconfig
+    ln -sv "$DOTFILES_DIR/.gitignore_global" ~/.gitignore_global
+}
 
-printf "${Yel}creating gtd folders${NC}\n";
-# things to do
-mkdir ~/actions
-# references, files in general, support for projects -> backup regularly
-mkdir ~/refs
-# the work is done here -> backup regularly and/or be on some source control
-mkdir ~/projs
-# where it all begins
-mkdir ~/in
-# temporary files -> delete regularly
-mkdir ~/tmp
-# user scripts
-mkdir ~/bin
-# user software
-mkdir ~/opt
-# user files that dont need backup
-mkdir ~/local
+question="Copy dotfiles?"
+if confirm "$question"; then
+    copy_dotfiles
+fi
+
+gtd_folders() {
+    printf "${Yel}removing folders${NC}\n"
+    rmdir ~/Documents
+    rmdir ~/Music
+    rmdir ~/Pictures
+    rmdir ~/Templates
+    rmdir ~/Videos
+
+    printf "${Yel}creating gtd folders${NC}\n"
+    # things to do
+    mkdir ~/actions
+    # references, files in general, support for projects -> backup regularly
+    mkdir ~/refs
+    # the work is done here -> backup regularly and/or be on some source control
+    mkdir ~/projs
+    # where it all begins
+    mkdir ~/in
+    # temporary files -> delete regularly
+    mkdir ~/tmp
+    # user scripts
+    mkdir ~/bin
+    # user software
+    mkdir ~/opt
+    # user files that dont need backup
+    mkdir ~/local
+}
+
+question="Apply GTD folders?"
+if confirm "$question"; then
+    gtd_folders
+fi
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # INSTALL SOFTWARE
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-printf "${Yel}installing restricted software${NC}\n";
-printf "${Gre}$DIVIDER${NC}\n";
-echo "please accept the licenses";
-printf "${Gre}$DIVIDER${NC}\n";
-#sudo apt install -y kubuntu-restricted-extras
-# > accept licenses
+printf "${Yel}Now we start installing software${NC}\n"
 
-printf "${Yel}installing codecs software${NC}\n";
-printf "${Gre}$DIVIDER${NC}\n";
-echo "please accept the licenses";
-printf "${Gre}$DIVIDER${NC}\n";
-# Codecs
-#sudo apt install -y libdvd-pkg
-# > accept licenses
+install_restricted() {
+    printf "${Yel}installing restricted software${NC}\n"
+    printf "${Gre}$DIVIDER${NC}\n"
+    echo "please accept the licenses"
+    printf "${Gre}$DIVIDER${NC}\n"
+    sudo apt install -y kubuntu-restricted-extras
+    # > accept licenses
+}
+question="Install restricted extras?"
+if confirm "$question"; then
+    install_restricted
+fi
 
-printf "${Yel}installing basic software${NC}\n";
+install_codecs() {
+    printf "${Yel}installing codecs software${NC}\n"
+    printf "${Gre}$DIVIDER${NC}\n"
+    echo "please accept the licenses"
+    printf "${Gre}$DIVIDER${NC}\n"
+    # Codecs
+    sudo apt install -y libdvd-pkg
+    # > accept licenses
+}
+question="Install codecs?"
+if confirm "$question"; then
+    install_restricted
+fi
+
+printf "${Yel}installing basic software${NC}\n"
 sudo apt install -y chromium-browser gpodder skype vlc yakuake youtube-dl \
     calibre openvpn network-manager-openvpn
 
-printf "${Yel}installing development software${NC}\n";
+printf "${Yel}installing development software${NC}\n"
 sudo apt install -y \
-    git-core git-gui gitk vim curl
+    git-core git-gui gitk vim curl xclip
 
-printf "${Yel}installing Google Chrome${NC}\n";
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
-rm -f google-chrome-stable_current_amd64.deb
-google-chrome &
+printf "${Yel}Now we start installing software from other sources${NC}\n"
 
-printf "${Yel}installing Telegram${NC}\n";
-curl -L -o telegram.tar.xz https://tdesktop.com/linux
-tar xf telegram.tar.xz
-mv Telegram ~/opt/Telegram/
-rm -f Telegram telegram.tar.xz
-~/opt/Telegram/Telegram &
+install_chrome() {
+    printf "${Yel}installing Google Chrome${NC}\n"
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo dpkg -i google-chrome-stable_current_amd64.deb
+    rm -f google-chrome-stable_current_amd64.deb
+    google-chrome &
+}
+question="Install Telegram?"
+if confirm "$question"; then
+    install_telegram
+fi
 
-printf "${Yel}installing dropbox${NC}\n";
-sudo apt install python-gpgme
-curl -L -o dropbox.tar.gz https://www.dropbox.com/download?plat=lnx.x86_64
-tar xf dropbox.tar.gz
-mv .dropbox-dist ~/.dropbox-dist/
-~/.dropbox-dist/dropboxd &
+install_telegram() {
+    printf "${Yel}installing Telegram${NC}\n"
+    curl -L -o telegram.tar.xz https://tdesktop.com/linux
+    tar xf telegram.tar.xz
+    mv Telegram ~/opt/Telegram/
+    rm -f Telegram telegram.tar.xz
+    ~/opt/Telegram/Telegram &
+}
+question="Install Telegram?"
+if confirm "$question"; then
+    install_telegram
+fi
 
-printf "${Yel}installing ubuntu-make${NC}\n";
-sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make -y
-sudo apt update
-sudo apt install ubuntu-make -y
+install_dropbox() {
+    printf "${Yel}installing dropbox${NC}\n"
+    sudo apt install python-gpgme
+    curl -L -o dropbox.tar.gz https://www.dropbox.com/download?plat=lnx.x86_64
+    tar xf dropbox.tar.gz
+    mv .dropbox-dist ~/.dropbox-dist/
+    ~/.dropbox-dist/dropboxd &
+}
+question="Install Telegram?"
+if confirm "$question"; then
+    install_telegram
+fi
 
-printf "${Yel}installing Android Studio${NC}\n";
-umake android
+install_android_studio() {
+    printf "${Yel}installing ubuntu-make${NC}\n"
+    sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make -y
+    sudo apt update
+    sudo apt install ubuntu-make -y
 
-printf "${Yel}installing atom editor${NC}\n";
-curl -L -o atom.deb https://atom.io/download/deb
-sudo dpkg -i atom.deb
-sudo apt install -f -y
-sudo dpkg -i atom.deb
-rm -f atom.deb
-printf "${Gre}$DIVIDER${NC}\n";
-echo "run 'apm stars --install' to install your starred packages";
-echo "you will need your token: https://atom.io/account";
-printf "${Gre}$DIVIDER${NC}\n";
-chromium-browser https://atom.io/account &
+    printf "${Yel}installing Android Studio${NC}\n"
+    umake android
+}
+question="Install Android Studio (using ubuntu-make)?"
+if confirm "$question"; then
+    install_telegram
+fi
 
-printf "${Yel}removing files and checking if all ok${NC}\n";
+printf "${Yel}And some software using the Snap Store${NC}\n\n"
+
+install_vscode() {
+    printf "${Yel}installing Visual Studio Code${NC}\n"
+    sudo snap install --classic code
+}
+question="Install Visual Studio Code?"
+if confirm "$question"; then
+    install_vscode
+fi
+
+install_bitwarden() {
+    printf "${Yel}installing Bitwarden${NC}\n"
+    sudo snap install bitwarden
+}
+question="Install Bitwarden (Password manager)?"
+if confirm "$question"; then
+    install_bitwarden
+fi
+
+printf "${Yel}removing files and checking if all ok${NC}\n"
 sudo apt autoremove
 sudo apt autoclean
 sudo apt clean
-sudo apt check
