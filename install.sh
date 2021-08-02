@@ -117,7 +117,7 @@ if confirm "$question"; then
 fi
 
 printf "${Yel}installing basic software${NC}\n"
-sudo apt install -y chromium-browser gpodder skype vlc yakuake youtube-dl \
+sudo apt install -y chromium-browser gpodder vlc yakuake youtube-dl \
     calibre openvpn network-manager-openvpn
 
 printf "${Yel}installing development software${NC}\n"
@@ -131,11 +131,10 @@ install_chrome() {
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     sudo dpkg -i google-chrome-stable_current_amd64.deb
     rm -f google-chrome-stable_current_amd64.deb
-    google-chrome &
 }
-question="Install Telegram?"
+question="Install Chrome?"
 if confirm "$question"; then
-    install_telegram
+    install_chrome
 fi
 
 install_telegram() {
@@ -144,11 +143,10 @@ install_telegram() {
     tar xf telegram.tar.xz
     mv Telegram ~/opt/Telegram/
     rm -f Telegram telegram.tar.xz
-    ~/opt/Telegram/Telegram &
 }
 question="Install Telegram?"
 if confirm "$question"; then
-    install_telegram
+    sudo snap install telegram-desktop
 fi
 
 install_dropbox() {
@@ -157,11 +155,10 @@ install_dropbox() {
     curl -L -o dropbox.tar.gz https://www.dropbox.com/download?plat=lnx.x86_64
     tar xf dropbox.tar.gz
     mv .dropbox-dist ~/.dropbox-dist/
-    ~/.dropbox-dist/dropboxd &
 }
-question="Install Telegram?"
+question="Install Dropbox?"
 if confirm "$question"; then
-    install_telegram
+    install_dropbox
 fi
 
 install_android_studio() {
@@ -175,7 +172,7 @@ install_android_studio() {
 }
 question="Install Android Studio (using ubuntu-make)?"
 if confirm "$question"; then
-    install_telegram
+    install_android_studio
 fi
 
 printf "${Yel}And some software using the Snap Store${NC}\n\n"
