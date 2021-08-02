@@ -1,5 +1,7 @@
 # dotfiles
 
+Contains some scripts to install common software and some basic dotfiles.
+
 ### Scripts to set up a new (k)ubuntu sytem
 
 Use at your own risk! And don't forget to change the user on _.gitconfig_ after the installation.
@@ -23,13 +25,13 @@ Copy the dotfiles, remove some bloatware and install a lot of software:
 ## 2- (Optional) Install zsh
 
 ```
-./install_zsh.sh
+./scripts/install_zsh.sh
 ```
 
 ### Oh-my-zsh
 
 ```
-./install_oh-my-zsh.sh
+./scripts/install_oh-my-zsh.sh
 ```
 
 Recomended plugins for zsh:
@@ -44,11 +46,21 @@ plugins=(
 Recomended theme for zsh:
 
 ```
-./install_powerline_fonts.sh
+./scripts/install_powerline_fonts.sh
 ```
 
 ```
 ZSH_THEME="agnoster"
+```
+
+Or use a custom theme:
+
+```
+cp ~/dotfiles/ohmyzsh/themes/* ~/.oh-my-zsh/custom/themes
+```
+
+```
+ZSH_THEME="agnoster-fk" or ZSH_THEME="nanotech-fk"
 ```
 
 Don't forget to change to the powerline fonts, on KDE:
@@ -60,7 +72,7 @@ Don't forget to change to the powerline fonts, on KDE:
 ## 3 - Install node with nvm
 
 ```
-./install_languages.sh
+./scripts/installs/install_nvm_node.sh
 ```
 
 ## FunçõesZZ
@@ -70,7 +82,7 @@ For brazilian users [FunçõesZZ](https://github.com/funcoeszz/funcoeszz) are in
 [FunçõesZZ](https://github.com/funcoeszz/funcoeszz) are a collection of shell commands, for example, to uppercase, simple math, tv guide, translate en<-->pt_br, ...
 
 ```
-./install_funcoeszz.sh
+./scripts/install_funcoeszz.sh
 ```
 
 ## Feedback
