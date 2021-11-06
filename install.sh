@@ -46,6 +46,8 @@ copy_dotfiles() {
     ln -sv "$DOTFILES_DIR/.editorconfig" ~/.editorconfig
     ln -sv "$DOTFILES_DIR/.gitconfig" ~/.gitconfig
     ln -sv "$DOTFILES_DIR/.gitignore_global" ~/.gitignore_global
+
+    source ./scripts/gitconfig_user.sh
 }
 
 question="Copy dotfiles?"

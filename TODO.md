@@ -2,7 +2,6 @@
 
 ## Make the installer customizable
 
-- [ ] remove user from .gitconfig
 - [ ] backup if files existing before
   - [ ] ask if want to override and/or backup
 - [ ] ask before each operation

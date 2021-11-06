@@ -1,325 +1,309 @@
 # https://gist.github.com/codexico/2a34c0d599f3af93b46f
 
-
 [color]
 
-    # Use colors in Git commands that are capable of colored output when
-    # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
-    ui = auto
+# Use colors in Git commands that are capable of colored output when
+# outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
+ui = auto
 
 [color "branch"]
 
-    current = yellow reverse
-    local = yellow
-    remote = green
+current = yellow reverse
+local = yellow
+remote = green
 
 [color "diff"]
 
-    meta = yellow bold
-    frag = magenta bold # line info
-    old = red # deletions
-    new = green # additions
+meta = yellow bold
+frag = magenta bold # line info
+old = red           # deletions
+new = green         # additions
 
 [color "status"]
 
-    added = yellow
-    changed = green
-    untracked = cyan
-
+added = yellow
+changed = green
+untracked = cyan
 
 [core]
-    editor = vim
+editor = vim
 
-    # Use custom `.gitignore` and `.gitattributes`
-    excludesfile = ~/.gitignore_global
-    attributesfile = ~/.gitattributes
-
-
-[user]
-    name = Francisco Kahil
-    email = codexico@gmail.com
-
+# Use custom `.gitignore` and `.gitattributes`
+excludesfile = ~/.gitignore_global
+attributesfile = ~/.gitattributes
 
 [push]
-    default = simple
-
+default = simple
 
 [alias]
 
-    # List all aliases, only the names
-    alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1/' | sort;
+# List all aliases, only the names
+alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1/' | sort
+
+# List all aliases, names and commands
+aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t\\2/' | sort
+
+# Clone a repository including all submodules
+cloneall = clone --recursive
 
-    # List all aliases, names and commands
-    aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t\\2/' | sort;
+# Where it is?
+url = remote -v
 
-    # Clone a repository including all submodules
-    cloneall = clone --recursive
+##########
+# Logs and infos
+##########
 
-    # Where it is?
-    url = remote -v;
+# Who contributed and how much
+who = shortlog -sne
 
+# Show last commit
+last = log -1 HEAD
 
-    ##########
-    # Logs and infos
-    ##########
+# Last tag
+lasttag = describe --tags --abbrev=0
 
-    # Who contributed and how much
-    who = shortlog -sne;
+# View abbreviated SHA, description, and history graph of the latest 20 commits
+l = log --graph --abbrev-commit --pretty=oneline -n 20
 
-    # Show last commit
-    last = log -1 HEAD;
+# View the SHA, description, date, author and history graph
+# Example:
+# * 66a2a64 - comment (20 hours ago) <USER1>
+# *   6a7206f - Merge branch 'develop' into very-cool-feature (21 hours ago) <USER2>
+# |\
+# | * 1748c5f - comment (21 hours ago) <USER2>
+# | * e3a42a1 - comment (21 hours ago) <USER2>
+# * 2667f01 - comment (2 days ago) <USER3>
+# * 7f5722d - comment (2 days ago) <USER1>
+#
+history = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 
-    # Last tag
-    lasttag = describe --tags --abbrev=0;
+# View the SHA, description, date, and history graph of my commits
+# Example:
+# * 66a2a64 - comment (20 hours ago) <USER1>
+# *   6a7206f - Merge branch 'develop' into very-cool-feature (21 hours ago) <USER2>
+# |\
+# | * 1748c5f - comment (21 hours ago) <USER2>
+# | * e3a42a1 - comment (21 hours ago) <USER2>
+# * 2667f01 - comment (2 days ago) <USER3>
+# * 7f5722d - comment (2 days ago) <USER1>
+#
+mylog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --author="$(git config USER.name)"
 
-    # View abbreviated SHA, description, and history graph of the latest 20 commits
-    l = log --graph --abbrev-commit --pretty=oneline -n 20;
+# List contributors with number of commits
+contributors = shortlog --summary --numbered
 
-    # View the SHA, description, date, author and history graph
-    # Example:
-    # * 66a2a64 - comment (20 hours ago) <USER1>
-    # *   6a7206f - Merge branch 'develop' into very-cool-feature (21 hours ago) <USER2>
-    # |\
-    # | * 1748c5f - comment (21 hours ago) <USER2>
-    # | * e3a42a1 - comment (21 hours ago) <USER2>
-    # * 2667f01 - comment (2 days ago) <USER3>
-    # * 7f5722d - comment (2 days ago) <USER1>
-    #
-    history = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset';
+# Show verbose output about tags
+tags = tag -l
 
-    # View the SHA, description, date, and history graph of my commits
-    # Example:
-    # * 66a2a64 - comment (20 hours ago) <USER1>
-    # *   6a7206f - Merge branch 'develop' into very-cool-feature (21 hours ago) <USER2>
-    # |\
-    # | * 1748c5f - comment (21 hours ago) <USER2>
-    # | * e3a42a1 - comment (21 hours ago) <USER2>
-    # * 2667f01 - comment (2 days ago) <USER3>
-    # * 7f5722d - comment (2 days ago) <USER1>
-    #
-    mylog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --author="$(git config USER.name)";
+##########
+# Status
+##########
 
-    # List contributors with number of commits
-    contributors = shortlog --summary --numbered;
+# View the current working tree status using the short format
+s = status -s
 
-    # Show verbose output about tags
-    tags = tag -l
+# Diff
+d = diff --patch-with-stat
 
+# Show the diff between the latest commit and the current state
+d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
 
-    ##########
-    # Status
-    ##########
+# `git di $number` shows the diff between the state `$number` revisions ago and the current state
+di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
 
-    # View the current working tree status using the short format
-    s = status -s;
+##########
+# Commits
+##########
 
-    # Diff
-    d = diff --patch-with-stat;
+# lazy alias
+c = commit
 
-    # Show the diff between the latest commit and the current state
-    d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+# Commit all changes
+ac = !git add . && git add -u && git commit -a
 
-    # `git di $number` shows the diff between the state `$number` revisions ago and the current state
-    di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+# add and commit with message, dont need quotation marks
+# Example:
+# git acm message without quotes
+acm = "!f() { git add . && git commit -m \"$(echo $@)\"; }; f"
 
+# commit with message, dont need quotation marks
+# Example:
+# git cm message without quotes
+cm = "!f() { git commit -m \"$(echo $@)\"; }; f"
 
-    ##########
-    # Commits
-    ##########
+# Amend the currently staged files to the latest commit
+amend = commit --amend --reuse-message=HEAD
 
-    # lazy alias
-    c = commit;
+# mark file as unchanged to prevent commits
+assume = git update-index --assume-unchanged
+assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
 
-    # Commit all changes
-    ac = !git add . && git add -u && git commit -a;
+# remove mark file as unchanged
+unassume = git update-index --no-assume-unchanged
+unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
 
-    # add and commit with message, dont need quotation marks
-    # Example:
-    # git acm message without quotes
-    acm = "!f() { git add . && git commit -m \"$(echo $@)\"; }; f";
+# Interactive rebase with the given number of latest commits
+reb = "!r() { git rebase -i HEAD~$1; }; r"
 
-    # commit with message, dont need quotation marks
-    # Example:
-    # git cm message without quotes
-    cm = "!f() { git commit -m \"$(echo $@)\"; }; f";
+# Add and continue rebase
+continue = !git add . && git rebase --continue
 
-    # Amend the currently staged files to the latest commit
-    amend = commit --amend --reuse-message=HEAD
+##########
+# Pull, Push
+##########
 
-    # mark file as unchanged to prevent commits
-    assume = git update-index --assume-unchanged;
-    assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
+# pull this branch
+get = !git pull origin $(git rev-parse --abbrev-ref HEAD)
 
-    # remove mark file as unchanged
-    unassume = git update-index --no-assume-unchanged;
-    unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
+# Pull in remote changes for the current repository and all its submodules
+pullall = !"git pull origin $(git rev-parse --abbrev-ref HEAD); git submodule foreach git pull origin master"
 
-    # Interactive rebase with the given number of latest commits
-    reb = "!r() { git rebase -i HEAD~$1; }; r"
+# push this branch
+post = !git push origin $(git rev-parse --abbrev-ref HEAD)
 
-    # Add and continue rebase
-    continue = !git add . && git rebase --continue
+# pull and push this branch
+update = "!f() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git s && git pull origin ${BRANCH} && git push origin ${BRANCH}; }; f"
 
+# go to master, fetch, pull, and back to branch
+upmaster = !git checkout master && git fetch -pt && git pull && git checkout -
 
-    ##########
-    # Pull, Push
-    ##########
+# push to origin
+first-push = !git push -u origin $(git rev-parse --abbrev-ref HEAD)
 
-    # pull this branch
-    get = !git pull origin $(git rev-parse --abbrev-ref HEAD);
+# fetch and pull
+fp = !git fetch -pt && git pull
 
-    # Pull in remote changes for the current repository and all its submodules
-    pullall = !"git pull origin $(git rev-parse --abbrev-ref HEAD); git submodule foreach git pull origin master"
+##########
+# Rebases
+##########
 
-    # push this branch
-    post = !git push origin $(git rev-parse --abbrev-ref HEAD);
+# Interactive rebase with the given number of latest commits
+reb = "!r() { git rebase -i HEAD~$1; }; r"
 
-    # pull and push this branch
-    update = "!f() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git s && git pull origin ${BRANCH} && git push origin ${BRANCH}; }; f";
+# Count commits on branch since master
+commits = !git rev-list --count HEAD ^master
 
-    # go to master, fetch, pull, and back to branch
-    upmaster = !git checkout master && git fetch -pt && git pull && git checkout -;
+# Squash all commits from actual branch
+squash = "!f() { COUNT=$(git commits); git reb ${COUNT}; }; f"
 
-    # push to origin
-    first-push = !git push -u origin $(git rev-parse --abbrev-ref HEAD);
+# Update master and rebase your branch
+pr-rebase = !git upmaster && git rebase master
 
-    # fetch and pull
-    fp = !git fetch -pt && git pull
+# Update master and squash your branch
+squashmaster = "!f() { git upmaster; git squash; f"
 
+##########
+# Deploys
+##########
 
-    ##########
-    # Rebases
-    ##########
+# update develop
+dev-deploy = !git pull origin develop && git push origin develop
 
-    # Interactive rebase with the given number of latest commits
-    reb = "!r() { git rebase -i HEAD~$1; }; r"
+# update this branch and send to another branch, and return to this branch
+mergeto = "!f() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git pull origin ${BRANCH} && git push origin ${BRANCH} && git checkout $1 && git pull origin $1 && git merge ${BRANCH} && git push origin $1 && git checkout ${BRANCH}; }; f"
 
-    # Count commits on branch since master
-    commits = !git rev-list --count HEAD ^master
+# update this branch and send to develop and another branch (release), and return to this branch
+#
+#                 another
+# branch develop  branch
+#      |
+#       \
+#           |
+#            \
+#                  |
+branch-deploy = "!f() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git pull origin ${BRANCH} && git push origin ${BRANCH} && git checkout develop && git pull origin develop && git merge ${BRANCH} && git push origin develop && git checkout $1 && git pull origin $1 && git merge develop && git push origin $1 && git checkout ${BRANCH}; }; f"
 
-    # Squash all commits from actual branch
-    squash = "!f() { COUNT=$(git commits); git reb ${COUNT}; }; f";
+##########
+# Branchs
+##########
 
-    # Update master and rebase your branch
-    pr-rebase =  !git upmaster && git rebase master;
+# lazy alias
+b = branch
+co = checkout
 
-    # Update master and squash your branch
-    squashmaster = "!f() { git upmaster; git squash; f";
+# create branch local and remote
+create = "!f() { git checkout -B $1 && git push origin $1; }; f"
 
+# Switch to a branch, creating it if necessary
+gb = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
-    ##########
-    # Deploys
-    ##########
+# update branchs
+branchs = !git fetch --all && git fetch -p && git branch -a
 
-    # update develop
-    dev-deploy = !git pull origin develop && git push origin develop;
+# change to another branch and update
+go = "!f() { git checkout $1 && git pull origin $1; }; f"
 
-    # update this branch and send to another branch, and return to this branch
-    mergeto = "!f() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git pull origin ${BRANCH} && git push origin ${BRANCH} && git checkout $1 && git pull origin $1 && git merge ${BRANCH} && git push origin $1 && git checkout ${BRANCH}; }; f";
+# remove branchs that dont exist on remote
+# (you should be on one existing branch)
+# TODO: 'git remote prune origin' does the same?
+delete-not-on-remote-branches = !git branch -a | egrep -v 'origin|master|develop' | xargs -n1 git branch -d
 
-    # update this branch and send to develop and another branch (release), and return to this branch
-    #
-    #                 another
-    # branch develop  branch
-    #      |
-    #       \
-    #           |
-    #            \
-    #                  |
-    branch-deploy = "!f() { BRANCH=$(git rev-parse --abbrev-ref HEAD); git pull origin ${BRANCH} && git push origin ${BRANCH} && git checkout develop && git pull origin develop && git merge ${BRANCH} && git push origin develop && git checkout $1 && git pull origin $1 && git merge develop && git push origin $1 && git checkout ${BRANCH}; }; f";
+# force remove branchs that dont exist on remote
+# (you should be on one existing branch)
+force-delete-not-on-remote-branches = !git branch -a | egrep -v 'origin|master|develop' | xargs -n1 git branch -D
 
+# remove branchs merged on master
+# TODO: dont remove develop if it is sync with master
+delete-merged-branches = !git branch --merged master | grep -v 'master' | xargs -n 1 git branch -d
 
-    ##########
-    # Branchs
-    ##########
+# force remove branchs merged on master
+force-delete-merged-branches = !git branch --merged master | grep -v 'master' | xargs -n 1 git branch -D
 
-    # lazy alias
-    b = branch;
-    co = checkout;
+##########
+# Undo
+##########
 
-    # create branch local and remote
-    create = "!f() { git checkout -B $1 && git push origin $1; }; f";
+# Undo a `git push`
+undopush = push -f origin HEAD^:master
 
-    # Switch to a branch, creating it if necessary
-    gb = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+# Undo merge
+undomerge = reset --hard HEAD@{1}
 
-    # update branchs
-    branchs = !git fetch --all && git fetch -p && git branch -a;
+# Undo changes not commited
+undo = reset --hard
 
-    # change to another branch and update
-    go = "!f() { git checkout $1 && git pull origin $1; }; f";
+# Undo last commit and remove from stage
+# Example
+# git unstage file1 file2 ...
+unstage = reset HEAD -- #file;
 
-    # remove branchs that dont exist on remote
-    # (you should be on one existing branch)
-    # TODO: 'git remote prune origin' does the same?
-    delete-not-on-remote-branches = !git branch -a | egrep -v 'origin|master|develop' | xargs -n1 git branch -d;
+# This leaves your working tree (the state of your files on disk) unchanged
+# but undoes the commit and leaves the changes you committed unstaged
+# https://stackoverflow.com/questions/927358/how-to-undo-the-most-recent-commits-in-git
+undocommit = reset HEAD~
 
-    # force remove branchs that dont exist on remote
-    # (you should be on one existing branch)
-    force-delete-not-on-remote-branches = !git branch -a | egrep -v 'origin|master|develop' | xargs -n1 git branch -D;
+##########
+# Merge
+##########
 
-    # remove branchs merged on master
-    # TODO: dont remove develop if it is sync with master
-    delete-merged-branches = !git branch --merged master | grep -v 'master' | xargs -n 1 git branch -d;
+# merge and use mine
+ours = "!f() { git checkout --ours $@ && git add $@; }; f"
 
-    # force remove branchs merged on master
-    force-delete-merged-branches = !git branch --merged master | grep -v 'master' | xargs -n 1 git branch -D;
+# merge and use theirs
+theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
 
+##########
+# Find
+##########
+find = "!f() { git rev-list --all | xargs git grep $1; }; f"
 
-    ##########
-    # Undo
-    ##########
+# Find branches containing commit
+fb = "!f() { git branch -a --contains $1; }; f"
 
-    # Undo a `git push`
-    undopush = push -f origin HEAD^:master;
+# Find tags containing commit
+ft = "!f() { git describe --always --contains $1; }; f"
 
-    # Undo merge
-    undomerge = reset --hard HEAD@{1};
+# Find commits by source code
+fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
 
-    # Undo changes not commited
-    undo = reset --hard;
+# Find commits by commit message
+fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 
-    # Undo last commit and remove from stage
-    # Example
-    # git unstage file1 file2 ...
-    unstage = reset HEAD -- #file;
+#===========================================
+# I really dont recommend powerful commands with  one letter only
+#===========================================
+#  a = add .;
 
-    # This leaves your working tree (the state of your files on disk) unchanged
-    # but undoes the commit and leaves the changes you committed unstaged
-    # https://stackoverflow.com/questions/927358/how-to-undo-the-most-recent-commits-in-git
-    undocommit = reset HEAD~;
-
-
-    ##########
-    # Merge
-    ##########
-
-    # merge and use mine
-    ours = "!f() { git checkout --ours $@ && git add $@; }; f";
-
-    # merge and use theirs
-    theirs = "!f() { git checkout --theirs $@ && git add $@; }; f";
-
-
-    ##########
-    # Find
-    ##########
-    find = "!f() { git rev-list --all | xargs git grep $1; }; f";
-
-    # Find branches containing commit
-    fb = "!f() { git branch -a --contains $1; }; f"
-
-    # Find tags containing commit
-    ft = "!f() { git describe --always --contains $1; }; f"
-
-    # Find commits by source code
-    fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
-
-    # Find commits by commit message
-    fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
-
-
-    #===========================================
-    # I really dont recommend powerful commands with  one letter only
-    #===========================================
-    #  a = add .;
+[user]
+name = Francisco Kahil
+email = codexico@gmail.com
