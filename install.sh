@@ -8,7 +8,7 @@ DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # COLORS
 # @usage: printf "${Bla}black ${Red}red ${NC} ...\n"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Red='\e[0;31m'
+# Red='\e[0;31m'
 Yel='\e[0;33m'
 Gre='\e[0;32m'
 # No Color
@@ -30,7 +30,7 @@ if confirm "$question"; then
     remove_kde_bloatware
 fi
 
-printf "\n\n${Yel}performing system update${NC}\n\n"
+printf "\n\n${Yel}%s${NC}\n\n" "performing system update"
 sudo apt update
 sudo apt upgrade -y
 
@@ -39,7 +39,7 @@ sudo apt upgrade -y
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 copy_dotfiles() {
-    printf "${Yel}creating symlinks${NC}\n"
+    printf "${Yel}%s${NC}\n" "creating symlinks"
     ln -sv "$DOTFILES_DIR/.bash_aliases" ~/.bash_aliases
     ln -sv "$DOTFILES_DIR/.csscomb.json" ~/.csscomb.json
     ln -sv "$DOTFILES_DIR/.editorconfig" ~/.editorconfig
@@ -53,14 +53,14 @@ if confirm "$question"; then
 fi
 
 gtd_folders() {
-    printf "${Yel}removing folders${NC}\n"
+    printf "${Yel}%s${NC}\n" "removing folders"
     rmdir ~/Documents
     rmdir ~/Music
     rmdir ~/Pictures
     rmdir ~/Templates
     rmdir ~/Videos
 
-    printf "${Yel}creating gtd folders${NC}\n"
+    printf "${Yel}%s${NC}\n" "creating gtd folders"
     # things to do
     mkdir ~/actions
     # references, files in general, support for projects -> backup regularly
@@ -87,13 +87,13 @@ fi
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # INSTALL SOFTWARE
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-printf "${Yel}Now we start installing software${NC}\n"
+printf "${Yel}%s${NC}\n" "Now we start installing software"
 
 install_restricted() {
-    printf "${Yel}installing restricted software${NC}\n"
-    printf "${Gre}$DIVIDER${NC}\n"
+    printf "${Yel}%s${NC}\n" "installing restricted software"
+    printf "${Gre}%s${NC}\n" "$DIVIDER"
     echo "please accept the licenses"
-    printf "${Gre}$DIVIDER${NC}\n"
+    printf "${Gre}%s${NC}\n" "$DIVIDER"
     sudo apt install -y kubuntu-restricted-extras
     # > accept licenses
 }
@@ -103,10 +103,10 @@ if confirm "$question"; then
 fi
 
 install_codecs() {
-    printf "${Yel}installing codecs software${NC}\n"
-    printf "${Gre}$DIVIDER${NC}\n"
+    printf "${Yel}%s${NC}\n" "installing codecs software"
+    printf "${Gre}%s${NC}\n" "$DIVIDER"
     echo "please accept the licenses"
-    printf "${Gre}$DIVIDER${NC}\n"
+    printf "${Gre}%s${NC}\n" "$DIVIDER"
     # Codecs
     sudo apt install -y libdvd-pkg
     # > accept licenses
@@ -116,18 +116,18 @@ if confirm "$question"; then
     install_restricted
 fi
 
-printf "${Yel}installing basic software${NC}\n"
+printf "${Yel}%s${NC}\n" "installing basic software"
 sudo apt install -y chromium-browser gpodder vlc yakuake youtube-dl \
     calibre openvpn network-manager-openvpn
 
-printf "${Yel}installing development software${NC}\n"
+printf "${Yel}%s${NC}\n" "installing development software"
 sudo apt install -y \
     git-core git-gui gitk vim curl xclip
 
-printf "${Yel}Now we start installing software from other sources${NC}\n"
+printf "${Yel}%s${NC}\n" "Now we start installing software from other sources"
 
 install_chrome() {
-    printf "${Yel}installing Google Chrome${NC}\n"
+    printf "${Yel}%s${NC}\n" "installing Google Chrome"
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     sudo dpkg -i google-chrome-stable_current_amd64.deb
     rm -f google-chrome-stable_current_amd64.deb
@@ -138,7 +138,7 @@ if confirm "$question"; then
 fi
 
 install_telegram() {
-    printf "${Yel}installing Telegram${NC}\n"
+    printf "${Yel}%s${NC}\n" "installing Telegram"
     curl -L -o telegram.tar.xz https://tdesktop.com/linux
     tar xf telegram.tar.xz
     mv Telegram ~/opt/Telegram/
@@ -150,7 +150,7 @@ if confirm "$question"; then
 fi
 
 install_dropbox() {
-    printf "${Yel}installing dropbox${NC}\n"
+    printf "${Yel}%s${NC}\n" "installing dropbox"
     sudo apt install python-gpgme
     curl -L -o dropbox.tar.gz https://www.dropbox.com/download?plat=lnx.x86_64
     tar xf dropbox.tar.gz
@@ -162,12 +162,12 @@ if confirm "$question"; then
 fi
 
 install_android_studio() {
-    printf "${Yel}installing ubuntu-make${NC}\n"
+    printf "${Yel}%s${NC}\n" "installing ubuntu-make"
     sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make -y
     sudo apt update
     sudo apt install ubuntu-make -y
 
-    printf "${Yel}installing Android Studio${NC}\n"
+    printf "${Yel}%s${NC}\n" "installing Android Studio"
     umake android
 }
 question="Install Android Studio (using ubuntu-make)?"
@@ -175,10 +175,10 @@ if confirm "$question"; then
     install_android_studio
 fi
 
-printf "${Yel}And some software using the Snap Store${NC}\n\n"
+printf "${Yel}%s${NC}\n\n" "And some software using the Snap Store"
 
 install_vscode() {
-    printf "${Yel}installing Visual Studio Code${NC}\n"
+    printf "${Yel}%s${NC}\n" "installing Visual Studio Code"
     sudo snap install --classic code
 }
 question="Install Visual Studio Code?"
@@ -187,7 +187,7 @@ if confirm "$question"; then
 fi
 
 install_bitwarden() {
-    printf "${Yel}installing Bitwarden${NC}\n"
+    printf "${Yel}%s${NC}\n" "installing Bitwarden"
     sudo snap install bitwarden
 }
 question="Install Bitwarden (Password manager)?"
@@ -195,7 +195,7 @@ if confirm "$question"; then
     install_bitwarden
 fi
 
-printf "${Yel}removing files and checking if all ok${NC}\n"
+printf "${Yel}%s${NC}\n" "removing files and checking if all ok"
 sudo apt autoremove
 sudo apt autoclean
 sudo apt clean
