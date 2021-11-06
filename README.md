@@ -1,12 +1,13 @@
 # dotfiles
 
-Contains some scripts to install common software and some basic dotfiles.
-
-### Scripts to set up a new (k)ubuntu sytem
+Contains some scripts to install common software and some basic dotfiles on a
+new (k)ubuntu sytem.
 
 Use at your own risk! And don't forget to change the user on _.gitconfig_ after the installation.
 
-## 0- clone the dotfiles
+## Installation
+
+### 0- clone the dotfiles
 
 ```
 sudo apt install git -y
@@ -14,21 +15,23 @@ git clone https://github.com/codexico/dotfiles.git
 cd dotfiles
 ```
 
-## 1- Basic install
+### 1- Basic install
 
-Copy the dotfiles, remove some bloatware and install a lot of software:
+You can run all at the same time: copy the dotfiles to the $HOME, remove some bloatware and install a lot of software:
 
 ```
 ./install.sh
 ```
 
-## 2- (Optional) Install zsh
+Or you can run one at a time running from the folder `scripts`.
+
+### 2- (Optional) Install other aplications
+
+#### 2.1 zsh and oh-my-zsh
 
 ```
 ./scripts/install_zsh.sh
 ```
-
-### Oh-my-zsh
 
 ```
 ./scripts/install_oh-my-zsh.sh
@@ -69,13 +72,13 @@ Don't forget to change to the powerline fonts, on KDE:
     > Appearance > Select Font > Droid Sans Mono for Powerline
     > Apply > Set as Default
 
-## 3 - Install node with nvm
+#### 2.2 - node with nvm
 
 ```
 ./scripts/installs/install_nvm_node.sh
 ```
 
-## FunçõesZZ
+#### 2.3 FunçõesZZ
 
 For brazilian users [FunçõesZZ](https://github.com/funcoeszz/funcoeszz) are included!
 
