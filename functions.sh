@@ -1,5 +1,4 @@
-#!/usr/bin/env sh
-
+#!/usr/bin/env bash
 
 # ----------------------------------------------------------------------------
 # Helper functions
@@ -10,34 +9,23 @@
 # [ -f "$HOME/dotfiles/functions.sh" ] && source $HOME/dotfiles/functions.sh;
 # ----------------------------------------------------------------------------
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# COLORS
-# @usage: printf "${Bla}black ${Red}red ${NC} ...\n"
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Red='\e[0;31m';
-Yel='\e[0;33m';
-Gre='\e[0;32m';
-# No Color
-NC='\e[0m';
-DIVIDER="==============================================";
-
 # ----------------------------------------------------------------------------
 # Create directory tree for a new project
 #
 # Ex:
 # $ proj-init cool-project
 # ----------------------------------------------------------------------------
-function proj-init() {
+proj-init() {
 
-	PROJS_DIR="$HOME/projs";
+	PROJS_DIR="$HOME/projs"
 
-	mkdir -p $PROJS_DIR/$1;
-	cd $PROJS_DIR/$1;
+	mkdir -p "$PROJS_DIR/$1"
+	cd "$PROJS_DIR/$1" || exit
 
-	mkdir code; 	# source code repository
-	mkdir w;		# working files, like psd
-	mkdir tmp;      # temporary files
-	mkdir material;	# original and received files from client, do not modify here
+	mkdir code     # source code repository
+	mkdir w        # working files, like psd
+	mkdir tmp      # temporary files
+	mkdir material # original and received files from client, do not modify here
 
 }
 
@@ -47,9 +35,9 @@ function proj-init() {
 # Ex:
 # $ proj cool-project
 # ----------------------------------------------------------------------------
-function proj() {
-	PROJS_DIR="$HOME/projs";
-	cd $PROJS_DIR/$1/code/$1;
+proj() {
+	PROJS_DIR="$HOME/projs"
+	cd "$PROJS_DIR/$1/code/$1" || exit
 }
 
 # ----------------------------------------------------------------------------
@@ -59,7 +47,6 @@ function proj() {
 #        ~$ mkcd foo/bar    # create a "foo/bar" directory from ~
 #        ~/foo/bar$         # now the  current/working directory is ~/foo/bar
 # ----------------------------------------------------------------------------
-function mkcd() {
-    mkdir -p "$@" && cd "$_";
+mkcd() {
+	mkdir -p "$@" && cd "$_" || exit
 }
-

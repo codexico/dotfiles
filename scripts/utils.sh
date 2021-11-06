@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 confirm() {
     message="$1 [Y/n] "
 

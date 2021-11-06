@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-now=`date +"%Y%m%d"`
+now=$(date +"%Y%m%d")
 dest=~/backups/${now}/
 
-    # --dry-run \
+# --dry-run \
 rsync -avhW --no-compress --progress \
     --exclude=.git \
     --exclude=node_modules \
@@ -19,4 +19,4 @@ rsync -avhW --no-compress --progress \
     ~/Public \
     ~/refs \
     ~/projs \
-    ${dest}
+    "${dest}"
