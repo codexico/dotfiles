@@ -30,11 +30,11 @@ Or you can run one at a time running from the folder `scripts`.
 #### 2.1 zsh and oh-my-zsh
 
 ```
-./scripts/install_zsh.sh
+./scripts/installs/install_zsh.sh
 ```
 
 ```
-./scripts/install_oh-my-zsh.sh
+./scripts/installs/install_oh-my-zsh.sh
 ```
 
 Recomended plugins for zsh:
@@ -49,7 +49,7 @@ plugins=(
 Recomended theme for zsh:
 
 ```
-./scripts/install_powerline_fonts.sh
+./scripts/installs/install_powerline_fonts.sh
 ```
 
 ```
@@ -85,7 +85,7 @@ For brazilian users [FunçõesZZ](https://github.com/funcoeszz/funcoeszz) are in
 [FunçõesZZ](https://github.com/funcoeszz/funcoeszz) are a collection of shell commands, for example, to uppercase, simple math, tv guide, translate en<-->pt_br, ...
 
 ```
-./scripts/install_funcoeszz.sh
+./scripts/installs/install_funcoeszz.sh
 ```
 
 ## Feedback
